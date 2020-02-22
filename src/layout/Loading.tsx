@@ -70,3 +70,19 @@ export const LoadingOverlayInner = styled('div')`
   justify-content: center;
   min-height: 200px;
 `
+
+type LoadingProps = {
+  loading: boolean
+}
+
+export const Loading = ({ loading }: LoadingProps) => {
+  if (!loading) return null
+
+  return (
+    <LoadingOverlay>
+      <LoadingOverlayInner>
+        <LoadingSpinner />
+      </LoadingOverlayInner>
+    </LoadingOverlay>
+  )
+}

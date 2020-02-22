@@ -4,13 +4,17 @@ import Page from '../../layout/Page'
 import Container from '../../layout/Container'
 import DataTable from '../../components/DataTable'
 import styled from '../../utils/styled'
-import { LoadingOverlay, LoadingOverlayInner, LoadingSpinner } from '../../layout/Loading'
+import { Loading } from '../../layout/Loading'
 import { Movie } from './_types'
 import { API_ENDPOINT } from '../../utils/api'
 import { getMovies } from './_actions'
 
-const MovieIndex = () => {
-  const [data, setData] = useState<Movie[]>([])
+type MovieIndexProps = {
+  data: Movie[]
+  setData: (data: Movie[]) => void
+}
+
+const MovieIndex = ({ data, setData }: MovieIndexProps) => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -56,13 +60,7 @@ const MovieIndex = () => {
     <Page>
       <Container>
         <TableWrapper>
-          {loading && (
-            <LoadingOverlay>
-              <LoadingOverlayInner>
-                <LoadingSpinner />
-              </LoadingOverlayInner>
-            </LoadingOverlay>
-          )}
+          <Loading loading={loading} />
           <p>MovieIndex Page</p>
           {/* <Link to="/movies/2">aslals</Link> */}
           {renderData()}
