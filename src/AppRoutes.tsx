@@ -20,7 +20,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/" exact>
             <Redirect to="/movies" />
           </Route>
-          <Route path="/movies" exact component={Movies} />
+          <Route path="/movies" component={Movies} />
           <Route path="/about" exact component={About} />
           <Route component={() => <div>Not Found</div>} />
         </Switch>

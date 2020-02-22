@@ -59,8 +59,6 @@ const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
 
-// activeClassName="is-active"
-
 const Header: React.SFC<HeaderProps> = ({ title }) => (
   <Wrapper>
     <HeaderInner>
@@ -76,7 +74,7 @@ const Header: React.SFC<HeaderProps> = ({ title }) => (
         </HeaderNavLink>
       </HeaderNav>
       <HeaderRight>
-        <CurrentTheme>Current theme: xxx</CurrentTheme>
+        <CurrentTheme>for Mews Systems</CurrentTheme>
       </HeaderRight>
     </HeaderInner>
   </Wrapper>
