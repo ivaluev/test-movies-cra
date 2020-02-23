@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import Page from '../../layout/Page'
 import Container from '../../layout/Container'
 import DataTable from '../../components/DataTable'
 import styled from '../../utils/styled'
 import { Loading } from '../../layout/Loading'
-import { Movie } from './_types'
 import { API_ENDPOINT } from '../../utils/api'
-import { getMovies } from './_actions'
+import { MoviesState } from '../../store/movies/types'
+import { fetchRequest } from '../../store/movies/actions'
+import { ApplicationState } from '../../store'
 
-type MovieIndexProps = {
-  data: Movie[]
-  setData: (data: Movie[]) => void
+// We can use `typeof` here to map our dispatch types to the props, like so.
+interface PropsFromDispatch {
+  fetchRequest: typeof fetchRequest
 }
 
-const MovieIndex = ({ data, setData }: MovieIndexProps) => {
-  const [loading, setLoading] = useState<boolean>(true)
+// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
+type AllProps = MoviesState & PropsFromDispatch
 
+const MovieIndex = ({ loading, data, fetchRequest: fr }: AllProps) => {
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true)
-      try {
-        const res = await getMovies()
-        setData(res)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
+    fr()
   }, [])
 
   function renderData() {
@@ -70,7 +64,19 @@ const MovieIndex = ({ data, setData }: MovieIndexProps) => {
   )
 }
 
-export default MovieIndex
+const mapStateToProps = ({ movies }: ApplicationState) => ({
+  loading: movies.loading,
+  data: movies.data,
+  errors: movies.errors
+})
+
+// mapDispatchToProps is especially useful for constraining our actions to the connected component.
+// You can access these via `this.props`.
+const mapDispatchToProps = {
+  fetchRequest
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieIndex)
 
 const MovieLoading = styled.tr`
   td {
