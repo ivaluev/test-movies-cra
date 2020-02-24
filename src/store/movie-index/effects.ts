@@ -26,15 +26,24 @@ function* handleFetch(action: any) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function* handleSearchChange(action: any) {
+  yield handleFetch(action)
+}
+
 // This is our watcher function. We use `take*()` functions to watch Redux for a specific action
 // type, and run our saga, for example the `handleFetch()` saga above.
 function* watchFetchRequest() {
   yield takeEvery(MovieIndexActionTypes.FETCH_REQUEST, handleFetch)
 }
 
+function* watchSearchChange() {
+  yield takeEvery(MovieIndexActionTypes.SEARCH_CHANGED, handleSearchChange)
+}
+
 // We can also use `fork()` here to split our saga into multiple watchers.
 function* movieIndexSaga() {
-  yield all([fork(watchFetchRequest)])
+  yield all([fork(watchFetchRequest), fork(watchSearchChange)])
 }
 
 export default movieIndexSaga

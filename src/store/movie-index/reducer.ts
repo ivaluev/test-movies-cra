@@ -12,6 +12,9 @@ export const initialState: MovieIndexState = {
 // everything will remain type-safe.
 const reducer: Reducer<MovieIndexState> = (state = initialState, action) => {
   switch (action.type) {
+    case MovieIndexActionTypes.SEARCH_CHANGED: {
+      return { ...state, search: action.payload }
+    }
     case MovieIndexActionTypes.FETCH_REQUEST: {
       return { ...state, loading: true }
     }

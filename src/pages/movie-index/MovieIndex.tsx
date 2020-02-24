@@ -7,16 +7,15 @@ import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
 import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { ApplicationState } from '../../store'
-import { MovieIndexItem } from '../../store/movie-index/types'
+import { Page as PageData } from '../../store/movie-index/types'
 import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexDetail'
 import { fetchSearchRequest } from '../../store/movie-index/actions'
 import { MovieSearchBox } from './MovieSearchBox'
 
 type MovieIndexProps = {
+  search?: string
   loading: boolean
-  page?: number
-  pagesTotal?: number
-  items?: MovieIndexItem[]
+  page?: PageData
   errors?: string
 }
 
@@ -28,10 +27,14 @@ interface PropsFromDispatch {
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AllProps = MovieIndexProps & PropsFromDispatch
 
-const MovieIndex = ({ loading, items = [], fetchRequest }: AllProps) => {
+const MovieIndex = ({ search, page, loading, fetchRequest }: AllProps) => {
+  const items = page?.results || []
+
   useEffect(() => {
-    fetchRequest('Jack Reacher')
-  }, [])
+    if (search && search.length > 2) {
+      fetchRequest(search)
+    }
+  }, [search])
 
   function renderData() {
     return (
@@ -72,10 +75,9 @@ const MovieIndex = ({ loading, items = [], fetchRequest }: AllProps) => {
 }
 
 const mapStateToProps = ({ movieIndex }: ApplicationState) => ({
+  search: movieIndex.search,
   loading: movieIndex.loading,
-  page: movieIndex.data?.page,
-  pagesTotal: movieIndex.data?.total_pages,
-  items: movieIndex.data?.results,
+  page: movieIndex.data,
   errors: movieIndex.errors
 })
 

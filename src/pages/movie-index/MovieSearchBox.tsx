@@ -1,26 +1,37 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Search } from 'emotion-icons/fa-solid'
 import { desaturate } from 'polished'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
+import { Dispatch } from 'redux'
 import styled from '../../utils/styled'
 import brandColors from '../../styles/colors/brandColors'
+import { searchChange } from '../../store/movie-index/actions'
+import { MovieIndexActionTypes } from '../../store/movie-index/types'
+import { ApplicationState } from '../../store'
+
+type ActionType = {
+  type: MovieIndexActionTypes.SEARCH_CHANGED
+  payload: string
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const searchAPI = (val: string, dsp: Dispatch<any>) => dsp(searchChange(val))
+const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 1200)
 
 const colorInactive = desaturate(0.7, brandColors.red)
 const colorActive = brandColors.red
 
-// eslint-disable-next-line no-alert
-const searchAPI = (text: string) => alert(text)
-const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 1500)
-
 export const MovieSearchBox = () => {
-  const [searchIsActive, setSearchIsActive] = useState(false)
-  const [search, setSearch] = useState('')
   const dispatch = useDispatch()
+  const { search } = useSelector((state: ApplicationState) => state.movieIndex)
+
+  const [searchIsActive, setSearchIsActive] = useState(false)
+  const [searchLocal, setSearchLocal] = useState(search)
   const onChange = (value: string) => {
-    setSearch(value)
+    setSearchLocal(value)
     if (value && value.length > 3) {
-      searchAPIDebounced(value)
+      searchAPIDebounced(value, dispatch)
     }
   }
 
@@ -30,7 +41,7 @@ export const MovieSearchBox = () => {
       <SearchInput
         type="text"
         placeholder="Search for a movie, tv show, person..."
-        value={search}
+        value={searchLocal}
         onChange={e => onChange(e.target.value)}
         onFocus={() => setSearchIsActive(true)}
         onBlur={() => setSearchIsActive(false)}
