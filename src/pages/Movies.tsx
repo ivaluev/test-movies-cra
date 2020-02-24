@@ -1,13 +1,9 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-import MovieIndex from './movies/MovieIndex'
-import MovieInfo from './movies/MovieInfo'
-import { ApplicationState } from '../store'
-import { MoviesState } from '../store/movies/types'
+import MovieIndex from './movie-index/MovieIndex'
+import MovieInfo from './movie-info/MovieInfo'
 
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-const Movies: FC<MoviesState> = () => {
+const Movies = () => {
   return (
     <Switch>
       <Route path="/movies" exact>
@@ -20,15 +16,4 @@ const Movies: FC<MoviesState> = () => {
   )
 }
 
-// It's usually good practice to only include one context at a time in a connected component.
-// Although if necessary, you can always include multiple contexts. Just make sure to
-// separate them from each other to prevent prop conflicts.
-const mapStateToProps = ({ movies }: ApplicationState) => ({
-  loading: movies.loading,
-  errors: movies.errors,
-  data: movies.data
-})
-
-// Now let's connect our component!
-// With redux v4's improved typings, we can finally omit generics here.
-export default connect(mapStateToProps)(Movies)
+export default Movies

@@ -16,25 +16,27 @@ import {
 import { API_ENDPOINT } from '../../utils/api'
 import { MovieStatsInner, MovieStats, StatAttribute, Bullet } from './MovieInfoStats'
 import { MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName } from './MovieInfoDetails'
-import { fetchRequest } from '../../store/movies/actions'
-import { MoviesState } from '../../store/movies/types'
 import { Loading } from '../../layout/Loading'
 import { ApplicationState } from '../../store'
+import { fetchInfoRequest } from '../../store/movie-info/actions'
+import { MovieInfoState } from '../../store/movie-info/types'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 type PropsFromDispatch = {
-  fetchRequest: typeof fetchRequest
+  fetchRequest: typeof fetchInfoRequest
 }
 
-type AllProps = MoviesState & PropsFromDispatch
+type AllProps = MovieInfoState & PropsFromDispatch
 
-const MovieInfo = ({ loading, data, fetchRequest: fr }: AllProps) => {
+const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
   const { id } = useParams()
-  const movie = data.find(m => m.name === id)
 
   useEffect(() => {
-    fr()
-  }, [])
+    if (id) {
+      const idInt: number = parseInt(id, 10)
+      fetchRequest(idInt)
+    }
+  }, [id])
 
   return (
     <Page>
@@ -131,16 +133,16 @@ const MovieInfo = ({ loading, data, fetchRequest: fr }: AllProps) => {
 // It's usually good practice to only include one context at a time in a connected component.
 // Although if necessary, you can always include multiple contexts. Just make sure to
 // separate them from each other to prevent prop conflicts.
-const mapStateToProps = ({ movies }: ApplicationState) => ({
-  loading: movies.loading,
-  errors: movies.errors,
-  data: movies.data
+const mapStateToProps = ({ movieInfo }: ApplicationState) => ({
+  loading: movieInfo.loading,
+  errors: movieInfo.errors,
+  data: movieInfo.data
 })
 
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
 const mapDispatchToProps = {
-  fetchRequest
+  fetchRequest: fetchInfoRequest
 }
 
 // Now let's connect our component!
