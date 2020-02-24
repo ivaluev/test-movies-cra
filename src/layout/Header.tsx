@@ -26,7 +26,7 @@ const HeaderInner = styled(Container)`
 `
 
 const HeaderLeft = styled.div`
-  padding-right: 1rem;
+  padding-right: 3rem;
 `
 
 const HeaderNav = styled.nav`

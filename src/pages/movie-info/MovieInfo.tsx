@@ -11,9 +11,10 @@ import {
   MovieInfoboxImage,
   MovieInfoboxHeading,
   MovieName,
-  MovieRoles
+  MovieRoles,
+  MovieReview
 } from './MovieInfoHeader'
-import { API_ENDPOINT } from '../../utils/api'
+import { API_ENDPOINT, API_ENDPOINT_IMAGE } from '../../utils/api'
 import { MovieStatsInner, MovieStats, StatAttribute, Bullet } from './MovieInfoStats'
 import { MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName } from './MovieInfoDetails'
 import { Loading } from '../../layout/Loading'
@@ -46,25 +47,26 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
           {movie && (
             <>
               <MovieInfobox>
-                <MovieInfoboxBlurBackground src={API_ENDPOINT + movie.img} />
+                <MovieInfoboxBlurBackground src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} />
                 <MovieInfoboxInner>
-                  <MovieInfoboxImage src={API_ENDPOINT + movie.img} />
+                  <MovieInfoboxImage src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} />
                   <MovieInfoboxHeading>
-                    <MovieName>{movie.localized_name}</MovieName>
+                    <MovieName>{movie.title}</MovieName>
                     <MovieRoles>
-                      {movie.attack_type} - <span>{movie.roles.join(', ')}</span>
+                      genres: <span>{movie.genres.join(', ')}</span>
                     </MovieRoles>
+                    <MovieReview>{movie.overview}</MovieReview>
                   </MovieInfoboxHeading>
                   <MovieStats>
                     <MovieStatsInner>
                       <StatAttribute attr="str" isPrimaryAttr={movie.primary_attr === 'str'}>
-                        <Bullet attr="str" /> {movie.base_str || 0} + {movie.str_gain || 0}
+                        <Bullet attr="str" /> {movie.vote_count || 0}
                       </StatAttribute>
                       <StatAttribute attr="agi" isPrimaryAttr={movie.primary_attr === 'agi'}>
-                        <Bullet attr="agi" /> {movie.base_agi || 0} + {movie.agi_gain || 0}
+                        <Bullet attr="agi" /> {movie.vote_average || 0}
                       </StatAttribute>
                       <StatAttribute attr="int" isPrimaryAttr={movie.primary_attr === 'int'}>
-                        <Bullet attr="int" /> {movie.base_int || 0} + {movie.int_gain || 0}
+                        <Bullet attr="int" /> {movie.popularity || 0}
                       </StatAttribute>
                     </MovieStatsInner>
                   </MovieStats>
@@ -73,52 +75,54 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
               <MovieDetails>
                 <MovieDetailsColumn>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Base Attack:</MovieDetailsAttrName> {movie.base_attack_min} - {movie.base_attack_max}
+                    <MovieDetailsAttrName>Release Date:</MovieDetailsAttrName> {movie.release_date || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Attack Range:</MovieDetailsAttrName> {movie.attack_range || '-'}
+                    <MovieDetailsAttrName>Budget:</MovieDetailsAttrName> {movie.budget || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Attack Speed:</MovieDetailsAttrName> {movie.attack_speed || '-'}
+                    <MovieDetailsAttrName>Revenue:</MovieDetailsAttrName> {movie.revenue || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Projectile Speed:</MovieDetailsAttrName> {movie.projectile_speed || '-'}
-                  </MovieDetailsRow>
-                </MovieDetailsColumn>
-                <MovieDetailsColumn>
-                  <MovieDetailsRow>
-                    <MovieDetailsAttrName>Health:</MovieDetailsAttrName> {movie.base_health || 0}
+                    <MovieDetailsAttrName>Runtime:</MovieDetailsAttrName> {movie.runtime || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Health Regen:</MovieDetailsAttrName> {movie.base_health_regen || 0}
+                    <MovieDetailsAttrName>Spoken Languages:</MovieDetailsAttrName>{' '}
+                    {movie.spoken_languages?.map(l => l.name).join(', ') || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Mana:</MovieDetailsAttrName> {movie.base_mana || 0}
+                    <MovieDetailsAttrName>Original Language:</MovieDetailsAttrName> {movie.original_language || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Mana Regen:</MovieDetailsAttrName> {movie.base_mana_regen || 0}
-                  </MovieDetailsRow>
-                </MovieDetailsColumn>
-                <MovieDetailsColumn>
-                  <MovieDetailsRow>
-                    <MovieDetailsAttrName>Base Armor:</MovieDetailsAttrName> -
+                    <MovieDetailsAttrName>Original Title:</MovieDetailsAttrName> {movie.original_title || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Magic Resistance:</MovieDetailsAttrName> {movie.base_mr || 0}%
-                  </MovieDetailsRow>
-                  <MovieDetailsRow>
-                    <MovieDetailsAttrName>Move Speed:</MovieDetailsAttrName> {movie.move_speed || 0}
-                  </MovieDetailsRow>
-                  <MovieDetailsRow>
-                    <MovieDetailsAttrName>Turn Speed:</MovieDetailsAttrName> {movie.turn_rate || 0}
+                    <MovieDetailsAttrName>Tagline:</MovieDetailsAttrName> {movie.tagline || '-'}
                   </MovieDetailsRow>
                 </MovieDetailsColumn>
                 <MovieDetailsColumn>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Number of Legs:</MovieDetailsAttrName> {movie.legs}
+                    <MovieDetailsAttrName>Production Companies:</MovieDetailsAttrName>
+                    {movie.production_companies
+                      ?.map(pc => pc.name)
+                      .slice(0, 2)
+                      .join(', ') || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>CM Enabled:</MovieDetailsAttrName> {movie.cm_enabled ? 'yes' : 'no'}
+                    <MovieDetailsAttrName>Production Countries:</MovieDetailsAttrName>
+                    {movie.production_countries.map(pc => pc.name).join(', ') || '-'}%
+                  </MovieDetailsRow>
+                  <MovieDetailsRow>
+                    <MovieDetailsAttrName>Homepage:</MovieDetailsAttrName> {movie.homepage || '-'}
+                  </MovieDetailsRow>
+                  <MovieDetailsRow>
+                    <MovieDetailsAttrName>IMDB id:</MovieDetailsAttrName> {movie.imdb_id || '-'}
+                  </MovieDetailsRow>
+                  <MovieDetailsRow>
+                    <MovieDetailsAttrName>Status:</MovieDetailsAttrName> {movie.status || '-'}
+                  </MovieDetailsRow>
+                  <MovieDetailsRow>
+                    <MovieDetailsAttrName>Video:</MovieDetailsAttrName> {movie.video ? 'yes' : 'no'}
                   </MovieDetailsRow>
                 </MovieDetailsColumn>
               </MovieDetails>

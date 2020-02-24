@@ -34,27 +34,33 @@ export interface MovieInfo extends ApiResponse {
   adult: boolean
   backdrop_path: string
   belongs_to_collection: MovieCollection
-  budget: number
-  genres: MovieGenre[]
-  homepage: string
-  imdb_id: string
-  original_language: string
-  original_title: string
-  overview: string
-  popularity: string
+
   poster_path: string
-  production_companies: MovieProductionCompany[]
-  production_countries: MovieProductionCountry[]
+  title: string
+  genres: MovieGenre[]
+  overview: string
+
+  vote_count: number
+  vote_average: number
+  popularity: string
+
   release_date: string
+  budget: number
   revenue: number
   runtime: number
+
   spoken_languages: MovieSpokenLanguage[]
-  status: string
+  original_language: string
+  original_title: string
   tagline: string
-  title: string
+
+  production_companies: MovieProductionCompany[]
+  production_countries: MovieProductionCountry[]
+  homepage: string
+  imdb_id: string
+
+  status: string
   video: boolean
-  vote_average: number
-  vote_count: number
 }
 
 // Declare state types with `readonly` modifier to get compile time immutability.

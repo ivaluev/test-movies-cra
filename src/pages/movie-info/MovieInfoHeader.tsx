@@ -77,3 +77,7 @@ export const MovieRoles = styled('p')`
     color: ${props => darken(0.25, props.theme.colors.white)};
   }
 `
+
+export const MovieReview = styled.p`
+  font-size: 0.8rem;
+`
