@@ -39,7 +39,7 @@ export const MovieSearchBox = () => {
       <SearchIcon color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"
-        placeholder="Search for a movie, tv show, person..."
+        placeholder="Search for a movie, tv show, person...  (search starts after 3 characters entered)"
         value={searchLocal || ''}
         onChange={e => onChange(e.target.value)}
         onFocus={() => setSearchIsActive(true)}

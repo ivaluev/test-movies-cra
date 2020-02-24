@@ -13,7 +13,7 @@ export const initialState: MovieIndexState = {
 const reducer: Reducer<MovieIndexState> = (state = initialState, action) => {
   switch (action.type) {
     case MovieIndexActionTypes.SEARCH_CHANGED: {
-      return { ...state, search: action.payload }
+      return { ...state, search: action.payload, loading: !!action.payload }
     }
     case MovieIndexActionTypes.FETCH_REQUEST: {
       return { ...state, loading: true }

@@ -8,7 +8,7 @@ import { Loading } from '../../layout/Loading'
 import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { ApplicationState } from '../../store'
 import { Page as PageData } from '../../store/movie-index/types'
-import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexItem'
+import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh } from './MovieIndexItem'
 import { MovieSearchBox } from './MovieIndexSearch'
 
 type MovieIndexProps = {
@@ -32,6 +32,7 @@ const MovieIndex = ({ page, loading }: MovieIndexProps) => {
           <tr key={movie.id}>
             <MovieIndexDetail>
               {movie.poster_path && <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />}
+              {!movie.poster_path && <MovieIconPh />}
               <MovieName>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </MovieName>

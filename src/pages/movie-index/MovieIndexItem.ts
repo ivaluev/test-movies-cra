@@ -25,6 +25,11 @@ export const MovieIcon = styled('img')`
   height: 32px;
 `
 
+export const MovieIconPh = styled.div`
+  width: 32px;
+  height: 32px;
+`
+
 export const MovieName = styled('div')`
   flex: 1 1 auto;
   height: 100%;

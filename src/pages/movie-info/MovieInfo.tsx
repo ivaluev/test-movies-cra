@@ -53,7 +53,7 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
                   <MovieInfoboxHeading>
                     <MovieName>{movie.title}</MovieName>
                     <MovieRoles>
-                      genres: <span>{movie.genres.join(', ')}</span>
+                      genres: <span>{movie.genres.map(g => g.name).join(', ')}</span>
                     </MovieRoles>
                     <MovieReview>{movie.overview}</MovieReview>
                   </MovieInfoboxHeading>
@@ -110,7 +110,10 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
                   </MovieDetailsRow>
                   <MovieDetailsRow>
                     <MovieDetailsAttrName>Production Countries:</MovieDetailsAttrName>
-                    {movie.production_countries.map(pc => pc.name).join(', ') || '-'}%
+                    {movie.production_countries
+                      .map(pc => pc.name)
+                      .slice(0, 2)
+                      .join(', ') || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
                     <MovieDetailsAttrName>Homepage:</MovieDetailsAttrName> {movie.homepage || '-'}
