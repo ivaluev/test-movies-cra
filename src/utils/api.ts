@@ -27,5 +27,6 @@ export async function searchMovies(search: string) {
 }
 
 export async function getMovieDetail(id: number) {
+  throw new Error('Функционал находится в разработке.')
   // https://api.themoviedb.org/3/movie/343611?api_key={api_key}
 }

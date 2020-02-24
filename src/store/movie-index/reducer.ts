@@ -3,7 +3,7 @@ import { MovieIndexState, MovieIndexActionTypes } from './types'
 
 // Type-safe initialState!
 export const initialState: MovieIndexState = {
-  data: [],
+  data: undefined,
   errors: undefined,
   loading: false
 }

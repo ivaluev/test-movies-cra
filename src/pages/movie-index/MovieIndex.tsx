@@ -7,10 +7,17 @@ import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
 import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { ApplicationState } from '../../store'
-import { MovieIndexState } from '../../store/movie-index/types'
-import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper } from './MovieIndexDetail'
-import { MovieName } from '../movie-info/MovieInfoHeader'
+import { MovieIndexItem } from '../../store/movie-index/types'
+import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexDetail'
 import { fetchSearchRequest } from '../../store/movie-index/actions'
+
+type MovieIndexProps = {
+  loading: boolean
+  page?: number
+  pagesTotal?: number
+  items?: MovieIndexItem[]
+  errors?: string
+}
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 interface PropsFromDispatch {
@@ -18,9 +25,9 @@ interface PropsFromDispatch {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = MovieIndexState & PropsFromDispatch
+type AllProps = MovieIndexProps & PropsFromDispatch
 
-const MovieIndex = ({ loading, data, fetchRequest }: AllProps) => {
+const MovieIndex = ({ loading, items = [], fetchRequest }: AllProps) => {
   useEffect(() => {
     fetchRequest('Jack Reacher')
   }, [])
@@ -28,15 +35,15 @@ const MovieIndex = ({ loading, data, fetchRequest }: AllProps) => {
   function renderData() {
     return (
       <DataTable columns={['Movie', 'Release Date', 'Popularity']} widths={['auto', '', '']}>
-        {loading && data.length === 0 && (
+        {loading && items.length === 0 && (
           <MovieLoading>
             <td colSpan={3}>Loading...</td>
           </MovieLoading>
         )}
-        {data.map(movie => (
+        {items.map(movie => (
           <tr key={movie.id}>
             <MovieIndexDetail>
-              <MovieIcon src={`${API_ENDPOINT_IMAGE}$/w100${movie.poster_path}`} alt={movie.title} />
+              <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />
               <MovieName>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </MovieName>
@@ -65,7 +72,9 @@ const MovieIndex = ({ loading, data, fetchRequest }: AllProps) => {
 
 const mapStateToProps = ({ movieIndex }: ApplicationState) => ({
   loading: movieIndex.loading,
-  data: movieIndex.data,
+  page: movieIndex.data?.page,
+  pagesTotal: movieIndex.data?.total_pages,
+  items: movieIndex.data?.results,
   errors: movieIndex.errors
 })
 
