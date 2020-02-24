@@ -4,14 +4,13 @@ import { Search } from 'emotion-icons/fa-solid'
 import { Close } from 'emotion-icons/ion-md'
 import { desaturate } from 'polished'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import { Dispatch } from 'redux'
 import styled from '../../utils/styled'
 import brandColors from '../../styles/colors/brandColors'
 import { searchChange } from '../../store/movie-index/actions'
 import { ApplicationState } from '../../store'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const setSearchState = (val: string, dsp: Dispatch<any>) => dsp(searchChange(val))
+const setSearchState = (fn: () => void) => fn()
 const setSearchStateDebounced = AwesomeDebouncePromise(setSearchState, 1200)
 
 const colorInactive = desaturate(0.7, brandColors.red)
@@ -21,11 +20,14 @@ export const MovieSearchBox = () => {
   const dispatch = useDispatch()
   const { search } = useSelector((state: ApplicationState) => state.movieIndex)
 
+  const [searchLocal, setSearchLocal] = useState(search || '')
   const [searchIsActive, setSearchIsActive] = useState(false)
-  const [searchLocal, setSearchLocal] = useState(search)
   const onChange = (value: string) => {
     setSearchLocal(value)
-    setSearchStateDebounced(value, dispatch)
+    // we are quit until get 3 letters from user
+    if (value && value.length > 2) {
+      setSearchStateDebounced(() => dispatch(searchChange(value)))
+    }
   }
   const clearSearch = () => {
     setSearchLocal('')

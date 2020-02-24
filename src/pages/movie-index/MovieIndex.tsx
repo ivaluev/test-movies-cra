@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Page from '../../layout/Page'
@@ -8,33 +8,17 @@ import { Loading } from '../../layout/Loading'
 import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { ApplicationState } from '../../store'
 import { Page as PageData } from '../../store/movie-index/types'
-import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexDetail'
-import { fetchSearchRequest } from '../../store/movie-index/actions'
-import { MovieSearchBox } from './MovieSearchBox'
+import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexItem'
+import { MovieSearchBox } from './MovieIndexSearch'
 
 type MovieIndexProps = {
-  search?: string
   loading: boolean
   page?: PageData
   errors?: string
 }
 
-// We can use `typeof` here to map our dispatch types to the props, like so.
-interface PropsFromDispatch {
-  fetchRequest: typeof fetchSearchRequest
-}
-
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = MovieIndexProps & PropsFromDispatch
-
-const MovieIndex = ({ search, page, loading, fetchRequest }: AllProps) => {
+const MovieIndex = ({ page, loading }: MovieIndexProps) => {
   const items = page?.results || []
-
-  useEffect(() => {
-    if (search && search.length > 2) {
-      fetchRequest(search)
-    }
-  }, [search])
 
   function renderData() {
     return (
@@ -75,16 +59,9 @@ const MovieIndex = ({ search, page, loading, fetchRequest }: AllProps) => {
 }
 
 const mapStateToProps = ({ movieIndex }: ApplicationState) => ({
-  search: movieIndex.search,
   loading: movieIndex.loading,
   page: movieIndex.data,
   errors: movieIndex.errors
 })
 
-// mapDispatchToProps is especially useful for constraining our actions to the connected component.
-// You can access these via `this.props`.
-const mapDispatchToProps = {
-  fetchRequest: fetchSearchRequest
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieIndex)
+export default connect(mapStateToProps)(MovieIndex)
