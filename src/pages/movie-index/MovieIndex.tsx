@@ -47,7 +47,7 @@ const MovieIndex = ({ search, page, loading, fetchRequest }: AllProps) => {
         {items.map(movie => (
           <tr key={movie.id}>
             <MovieIndexDetail>
-              <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />
+              {movie.poster_path && <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />}
               <MovieName>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </MovieName>
