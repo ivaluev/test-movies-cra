@@ -47,6 +47,8 @@ export enum MovieIndexActionTypes {
 // https://github.com/piotrwitek/react-redux-typescript-guide#state-with-type-level-immutability
 export interface MovieIndexState {
   readonly search?: string
+  readonly page?: number
+  readonly pages?: number
   readonly loading: boolean
   readonly data?: Page
   readonly errors?: string

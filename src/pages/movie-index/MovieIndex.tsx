@@ -10,6 +10,7 @@ import { ApplicationState } from '../../store'
 import { Page as PageData } from '../../store/movie-index/types'
 import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh } from './MovieIndexItem'
 import { MovieSearchBox } from './MovieIndexSearch'
+import MovieIndexPager from './MovieIndexPager'
 
 type MovieIndexProps = {
   loading: boolean
@@ -54,6 +55,7 @@ const MovieIndex = ({ page, loading }: MovieIndexProps) => {
           {/* <Link to="/movies/2">aslals</Link> */}
           {renderData()}
         </TableWrapper>
+        <MovieIndexPager />
       </Container>
     </Page>
   )
