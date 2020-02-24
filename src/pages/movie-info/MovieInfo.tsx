@@ -14,7 +14,7 @@ import {
   MovieRoles,
   MovieReview
 } from './MovieInfoHeader'
-import { API_ENDPOINT, API_ENDPOINT_IMAGE } from '../../utils/api'
+import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { MovieStatsInner, MovieStats, StatAttribute, Bullet } from './MovieInfoStats'
 import { MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName } from './MovieInfoDetails'
 import { Loading } from '../../layout/Loading'

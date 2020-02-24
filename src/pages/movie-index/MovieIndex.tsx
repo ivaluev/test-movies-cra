@@ -10,6 +10,7 @@ import { ApplicationState } from '../../store'
 import { MovieIndexItem } from '../../store/movie-index/types'
 import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName } from './MovieIndexDetail'
 import { fetchSearchRequest } from '../../store/movie-index/actions'
+import { MovieSearchBox } from './MovieSearchBox'
 
 type MovieIndexProps = {
   loading: boolean
@@ -61,7 +62,7 @@ const MovieIndex = ({ loading, items = [], fetchRequest }: AllProps) => {
       <Container>
         <TableWrapper>
           <Loading loading={loading} />
-          <p>MovieIndex Page</p>
+          <MovieSearchBox />
           {/* <Link to="/movies/2">aslals</Link> */}
           {renderData()}
         </TableWrapper>
