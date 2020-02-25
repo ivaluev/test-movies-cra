@@ -14,9 +14,9 @@ const About = () => {
             libraries, as well as design pattern on writing type-safe React + Redux app with TypeScript.
           </p>
           <p>
-            This project is intended as a test task for position of a Frontend Developer at MewsSystems{' '}
+            This project is intended as a test task for position of a Frontend Developer at{' '}
             <a href="https://github.com/MewsSystems/developers" target="blank" rel="noopener noreferrer">
-              github
+              MewsSystems
             </a>
             .
           </p>
