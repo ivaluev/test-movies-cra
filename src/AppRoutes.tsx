@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
       <Global styles={normalize} />
       <Global styles={globals} />
       <Router>
-        <Header title="FE test app" />
+        <Header title="IMDb movies search" />
         <Switch>
           <Route path="/" exact>
             <Redirect to="/movies" />
