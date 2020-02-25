@@ -13,3 +13,11 @@ To retrieve information about movies, use [TheMovieDb API](https://developers.th
 ## Required technologies
 
 To test your proficiency with technologies we use the most, we require the solution to be written with use of React, Redux and styled-components. Use of any additional libraries is allowed and it's up to you.
+
+Using the following apis for search
+
+https://api.themoviedb.org/3/search/movie?api_key=03b8572954325680265531140190fd2a&query=Jack+Reacher
+
+Usinf the following api for detail
+
+https://api.themoviedb.org/3/movie/343611?api_key={api_key}

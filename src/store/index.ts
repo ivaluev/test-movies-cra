@@ -3,14 +3,19 @@ import { all, fork } from 'redux-saga/effects'
 import { connectRouter, RouterState } from 'connected-react-router'
 import { History } from 'history'
 
-import moviesSaga from './movies/effects'
-import { moviesReducer } from './movies/reducer'
-import { MoviesState } from './movies/types'
+import movieIndexSaga from './movie-index/effects'
+import { movieIndexReducer } from './movie-index/reducer'
+import { MovieIndexState } from './movie-index/types'
+
+import movieInfoSaga from './movie-info/effects'
+import { movieInfoReducer } from './movie-info/reducers'
+import { MovieInfoState } from './movie-info/types'
 
 // The top-level state object
 export interface ApplicationState {
-  movies: MoviesState
   router: RouterState
+  movieIndex: MovieIndexState
+  movieInfo: MovieInfoState
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property
@@ -18,13 +23,14 @@ export interface ApplicationState {
 // the reducer acts on the corresponding ApplicationState property type.
 export const createRootReducer = (history: History) =>
   combineReducers({
-    movies: moviesReducer,
-    router: connectRouter(history)
+    router: connectRouter(history),
+    movieIndex: movieIndexReducer,
+    movieInfo: movieInfoReducer
   })
 
 // Here we use `redux-saga` to trigger actions asynchronously. `redux-saga` uses something called a
 // "generator function", which you can read about here:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
 export function* rootSaga() {
-  yield all([fork(moviesSaga)])
+  yield all([fork(movieIndexSaga), fork(movieInfoSaga)])
 }
