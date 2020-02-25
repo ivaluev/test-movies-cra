@@ -37,6 +37,7 @@ export interface Page extends ApiResponse {
 // personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
 // of Redux's `@@INIT` action.
 export enum MovieIndexActionTypes {
+  PAGE_CHANGED = '@@movies/PAGE_CHANGED',
   SEARCH_CHANGED = '@@movies/SEARCH_CHANGED',
   FETCH_REQUEST = '@@movies/FETCH_REQUEST',
   FETCH_SUCCESS = '@@movies/FETCH_SUCCESS',
@@ -48,7 +49,6 @@ export enum MovieIndexActionTypes {
 export interface MovieIndexState {
   readonly search?: string
   readonly page?: number
-  readonly pages?: number
   readonly loading: boolean
   readonly data?: Page
   readonly errors?: string

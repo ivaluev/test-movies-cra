@@ -28,6 +28,9 @@ export const MovieSearchBox = () => {
     if (value && value.length > 2) {
       setSearchStateDebounced(() => dispatch(searchChange(value)))
     }
+    if (!value) {
+      dispatch(searchChange(''))
+    }
   }
   const clearSearch = () => {
     setSearchLocal('')
