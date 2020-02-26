@@ -1,5 +1,4 @@
 {
-  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint-config-blvd/react",
     "prettier/@typescript-eslint",
@@ -25,6 +24,8 @@
     "jest/globals": true
   },
   "rules": {
+    "quotes": [2, "single", "avoid-escape"],
+    "semi": [1, "never"],
     "import/prefer-default-export": [
       "off"
     ],
