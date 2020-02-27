@@ -9,7 +9,7 @@ import Header from './layout/Header'
 import Movies from './pages/Movies'
 import About from './pages/About'
 
-const AppRoutes: React.FC = () => {
+export default function AppRoutes() {
   return (
     <Root>
       <Global styles={normalize} />
@@ -28,5 +28,3 @@ const AppRoutes: React.FC = () => {
     </Root>
   )
 }
-
-export default AppRoutes

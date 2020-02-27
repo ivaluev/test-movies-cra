@@ -1,37 +1,47 @@
+/* eslint-disable no-param-reassign */
 import { Reducer } from 'redux'
-import { MovieIndexState, MovieIndexActionTypes } from './types'
+import produce from 'immer'
+import { MovieIndexState, MovieIndexActionTypes, PageApiResponse } from './types'
 
 // Type-safe initialState!
 export const initialState: MovieIndexState = {
-  data: undefined,
-  errors: undefined,
   loading: false
 }
 
-// Thanks to Redux 4's much simpler typings, we can take away a lot of typings on the reducer side,
-// everything will remain type-safe.
-const reducer: Reducer<MovieIndexState> = (state = initialState, action) => {
-  switch (action.type) {
-    case MovieIndexActionTypes.SEARCH_CHANGED: {
-      return { ...state, search: action.payload, page: 1, loading: !!action.payload }
+// I used Immer to prevent mutability without being forced to copy state object every time.
+// Immer perfectly reduces amount if code in reducers, it's safe and makes code much more readable.
+const reducer: Reducer<MovieIndexState> = (state = initialState, action) =>
+  produce(state, draft => {
+    switch (action.type) {
+      case MovieIndexActionTypes.SEARCH_CHANGED:
+        draft.search = action.payload
+        draft.page = 1
+        draft.loading = !!action.payload
+        break
+      case MovieIndexActionTypes.PAGE_CHANGED:
+        draft.page = action.payload
+        draft.loading = true
+        break
+      case MovieIndexActionTypes.FETCH_REQUEST:
+        draft.loading = true
+        break
+      case MovieIndexActionTypes.FETCH_SUCCESS:
+        {
+          draft.loading = false
+          const data: PageApiResponse = action.payload
+          // draft.page = data.page // chnaged in pageChanged event
+          draft.pagesTotal = data.total_pages
+          draft.results = data.results
+        }
+        break
+      case MovieIndexActionTypes.FETCH_ERROR:
+        draft.loading = false
+        draft.errors = action.payload
+        break
+      default:
+        break
     }
-    case MovieIndexActionTypes.PAGE_CHANGED: {
-      return { ...state, page: action.payload, loading: true }
-    }
-    case MovieIndexActionTypes.FETCH_REQUEST: {
-      return { ...state, loading: true }
-    }
-    case MovieIndexActionTypes.FETCH_SUCCESS: {
-      return { ...state, loading: false, data: action.payload }
-    }
-    case MovieIndexActionTypes.FETCH_ERROR: {
-      return { ...state, loading: false, errors: action.payload }
-    }
-    default: {
-      return state
-    }
-  }
-}
+  })
 
 // Instead of using default export, we use named exports. That way we can group these exports
 // inside the `index.js` folder.

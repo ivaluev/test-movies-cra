@@ -1,3 +1,13 @@
+# Check and update
+
+[ ] * reshape state
+[ ] * verify solution to store image url (now we import it)
+[ ] * check pattern of button component setup (maybe import it to see)
+[ ] * Add immer
+[ ] * Add hook - useStateSelector
+[ ] * think about storing constants?
+
+
 # Mews frontend developer task
 
 You should start with creating a fork of the repository. When you're finished with the task, you should create a pull request.

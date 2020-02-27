@@ -7,29 +7,27 @@ import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
 import { API_ENDPOINT_IMAGE } from '../../utils/api'
 import { ApplicationState } from '../../store'
-import { Page as PageData } from '../../store/movie-index/types'
+import { MovieIndexItem } from '../../store/movie-index/types'
 import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh } from './MovieIndexItem'
 import { MovieSearchBox } from './MovieIndexSearch'
 import MovieIndexPager from './MovieIndexPager'
 
 type MovieIndexProps = {
   loading: boolean
-  page?: PageData
+  results: MovieIndexItem[]
   errors?: string
 }
 
-const MovieIndex = ({ page, loading }: MovieIndexProps) => {
-  const items = page?.results || []
-
+const MovieIndex = ({ results, loading }: MovieIndexProps) => {
   function renderData() {
     return (
       <DataTable columns={['Movie', 'Release Date', 'Popularity']} widths={['auto', '', '']}>
-        {loading && items.length === 0 && (
+        {loading && results.length === 0 && (
           <MovieLoading>
             <td colSpan={3}>Loading...</td>
           </MovieLoading>
         )}
-        {items.map(movie => (
+        {results.map(movie => (
           <tr key={movie.id}>
             <MovieIndexDetail>
               {movie.poster_path && <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />}
@@ -63,7 +61,7 @@ const MovieIndex = ({ page, loading }: MovieIndexProps) => {
 
 const mapStateToProps = ({ movieIndex }: ApplicationState) => ({
   loading: movieIndex.loading,
-  page: movieIndex.data,
+  results: movieIndex.results || [],
   errors: movieIndex.errors
 })
 

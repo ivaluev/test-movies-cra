@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { all, call, fork, put, takeLatest, select } from 'redux-saga/effects'
-import { MovieIndexActionTypes } from './types'
+import { MovieIndexActionTypes, PageApiResponse } from './types'
 import { fetchSearchRequestError, fetchSearchRequestSuccess } from './actions'
 import { callApi, API_ENDPOINT, API_KEY } from '../../utils/api'
 
@@ -14,12 +15,19 @@ function getSearchUrl(searchTerm: string, page: number) {
 function* handleSearchChange(action: any) {
   try {
     if (!action.payload) {
-      yield put(fetchSearchRequestSuccess([]))
+      yield put(
+        fetchSearchRequestSuccess({
+          page: 1,
+          total_pages: 0,
+          total_results: 0,
+          results: []
+        })
+      )
       return
     }
     const searchUrl = getSearchUrl(action.payload, 1)
     // To call async functions, use redux-saga's `call()`.
-    const res = yield call(callApi, 'get', searchUrl)
+    const res: PageApiResponse = yield call(callApi, 'get', searchUrl)
     if (res.error) {
       yield put(fetchSearchRequestError(res.error))
     } else {
@@ -46,7 +54,7 @@ function* handlePageChange(action: any) {
     const search = yield select(state => state.movieIndex.search)
     const searchUrl = getSearchUrl(search, action.payload)
     // To call async functions, use redux-saga's `call()`.
-    const res = yield call(callApi, 'get', searchUrl)
+    const res: PageApiResponse = yield call(callApi, 'get', searchUrl)
     if (res.error) {
       yield put(fetchSearchRequestError(res.error))
     } else {

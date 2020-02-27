@@ -23,7 +23,7 @@ export type MovieIndexItem = {
   poster_path: string
 }
 
-export interface Page extends ApiResponse {
+export interface PageApiResponse extends ApiResponse {
   page: number
   total_results: number
   total_pages: number
@@ -37,8 +37,8 @@ export interface Page extends ApiResponse {
 // personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
 // of Redux's `@@INIT` action.
 export enum MovieIndexActionTypes {
-  PAGE_CHANGED = '@@movies/PAGE_CHANGED',
   SEARCH_CHANGED = '@@movies/SEARCH_CHANGED',
+  PAGE_CHANGED = '@@movies/PAGE_CHANGED',
   FETCH_REQUEST = '@@movies/FETCH_REQUEST',
   FETCH_SUCCESS = '@@movies/FETCH_SUCCESS',
   FETCH_ERROR = '@@movies/FETCH_ERROR'
@@ -47,9 +47,10 @@ export enum MovieIndexActionTypes {
 // Declare state types with `readonly` modifier to get compile time immutability.
 // https://github.com/piotrwitek/react-redux-typescript-guide#state-with-type-level-immutability
 export interface MovieIndexState {
+  readonly loading: boolean
+  readonly errors?: string
   readonly search?: string
   readonly page?: number
-  readonly loading: boolean
-  readonly data?: Page
-  readonly errors?: string
+  readonly pagesTotal?: number
+  readonly results?: MovieIndexItem[]
 }

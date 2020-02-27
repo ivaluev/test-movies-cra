@@ -5,25 +5,23 @@ import { pageChange } from '../../store/movie-index/actions'
 import styled from '../../utils/styled'
 
 const MovieIndexPager = () => {
-  const { page, data } = useSelector((state: ApplicationState) => state.movieIndex)
-  const current = page || 1
-  const pagesTotal = data ? data.total_pages : 1
-  const hasNext = current < pagesTotal
+  const { page = 1, pagesTotal = 1 } = useSelector((state: ApplicationState) => state.movieIndex)
+  const hasNext = page < pagesTotal
 
   const dispatch = useDispatch()
   const handlePageNext = () => {
-    dispatch(pageChange(current + 1))
+    dispatch(pageChange(page + 1))
   }
   const handlePagePrev = () => {
-    dispatch(pageChange(current - 1))
+    dispatch(pageChange(page - 1))
   }
 
   if (pagesTotal > 1) {
     return (
       <PaginationWrapper>
-        {current > 1 && <PageNumber onClick={handlePagePrev}>← Previous</PageNumber>}
+        {page > 1 && <PageNumber onClick={handlePagePrev}>← Previous</PageNumber>}
         <PageInfo>
-          {current} / {pagesTotal}
+          {page} / {pagesTotal}
         </PageInfo>
         {hasNext && <PageNumber onClick={handlePageNext}>Next →</PageNumber>}
       </PaginationWrapper>
