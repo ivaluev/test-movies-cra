@@ -1,9 +1,9 @@
 # Check and update
 
-[ ] * reshape state
+[x] * reshape state
 [ ] * verify solution to store image url (now we import it)
 [ ] * check pattern of button component setup (maybe import it to see)
-[ ] * Add immer
+[x] * Add immer
 [ ] * Add hook - useStateSelector
 [ ] * think about storing constants?
 
