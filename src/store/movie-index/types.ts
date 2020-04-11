@@ -28,21 +28,12 @@ export interface PageApiResponse extends ApiResponse {
   total_results: number
   total_pages: number
   results: MovieIndexItem[]
+  error?: string
 }
 
 // Use `enum`s for better autocompletion of action type names. These will
 // be compiled away leaving only the final value in your compiled code.
 //
-// Define however naming conventions you'd like for your action types, but
-// personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
-// of Redux's `@@INIT` action.
-export enum MovieIndexActionTypes {
-  SEARCH_CHANGED = '@@movies/SEARCH_CHANGED',
-  PAGE_CHANGED = '@@movies/PAGE_CHANGED',
-  FETCH_REQUEST = '@@movies/FETCH_REQUEST',
-  FETCH_SUCCESS = '@@movies/FETCH_SUCCESS',
-  FETCH_ERROR = '@@movies/FETCH_ERROR'
-}
 
 // Declare state types with `readonly` modifier to get compile time immutability.
 // https://github.com/piotrwitek/react-redux-typescript-guide#state-with-type-level-immutability

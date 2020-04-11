@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { all, call, fork, put, takeLatest, select } from 'redux-saga/effects'
-import { MovieIndexActionTypes, PageApiResponse } from './types'
-import { fetchSearchRequestError, fetchSearchRequestSuccess } from './actions'
+import {
+  all, call, fork, put, takeLatest, select
+} from 'redux-saga/effects'
+import { getType } from 'typesafe-actions'
+import { PageApiResponse } from './types'
+import { fetchSearchAction, searchChange, pageChange } from './actions'
 import { callApi, API_ENDPOINT, API_KEY } from '../../utils/api'
 
 function getSearchUrl(searchTerm: string, page: number) {
@@ -16,7 +19,7 @@ function* handleSearchChange(action: any) {
   try {
     if (!action.payload) {
       yield put(
-        fetchSearchRequestSuccess({
+        fetchSearchAction.success({
           page: 1,
           total_pages: 0,
           total_results: 0,
@@ -29,15 +32,15 @@ function* handleSearchChange(action: any) {
     // To call async functions, use redux-saga's `call()`.
     const res: PageApiResponse = yield call(callApi, 'get', searchUrl)
     if (res.error) {
-      yield put(fetchSearchRequestError(res.error))
+      yield put(fetchSearchAction.failure(res.error))
     } else {
-      yield put(fetchSearchRequestSuccess(res))
+      yield put(fetchSearchAction.success(res))
     }
   } catch (err) {
     if (err instanceof Error && err.stack) {
-      yield put(fetchSearchRequestError(err.stack))
+      yield put(fetchSearchAction.failure(err.stack))
     } else {
-      yield put(fetchSearchRequestError('An unknown error occured.'))
+      yield put(fetchSearchAction.failure('An unknown error occured.'))
     }
   }
 }
@@ -45,7 +48,7 @@ function* handleSearchChange(action: any) {
 // This is our watcher function. We use `take*()` functions to watch Redux for a specific action
 // type, and run our saga, for example the `handleFetch()` saga above.
 function* watchSearchChange() {
-  yield takeLatest(MovieIndexActionTypes.SEARCH_CHANGED, handleSearchChange)
+  yield takeLatest(getType(searchChange), handleSearchChange)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -56,21 +59,21 @@ function* handlePageChange(action: any) {
     // To call async functions, use redux-saga's `call()`.
     const res: PageApiResponse = yield call(callApi, 'get', searchUrl)
     if (res.error) {
-      yield put(fetchSearchRequestError(res.error))
+      yield put(fetchSearchAction.failure(res.error))
     } else {
-      yield put(fetchSearchRequestSuccess(res))
+      yield put(fetchSearchAction.success(res))
     }
   } catch (err) {
     if (err instanceof Error && err.stack) {
-      yield put(fetchSearchRequestError(err.stack))
+      yield put(fetchSearchAction.failure(err.stack))
     } else {
-      yield put(fetchSearchRequestError('An unknown error occured.'))
+      yield put(fetchSearchAction.failure('An unknown error occured.'))
     }
   }
 }
 
 function* watchPageChange() {
-  yield takeLatest(MovieIndexActionTypes.PAGE_CHANGED, handlePageChange)
+  yield takeLatest(getType(pageChange), handlePageChange)
 }
 
 // We can also use `fork()` here to split our saga into multiple watchers.
