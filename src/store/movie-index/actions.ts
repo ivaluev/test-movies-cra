@@ -1,4 +1,4 @@
-import { action } from 'typesafe-actions'
+import { action, createAsyncAction } from 'typesafe-actions'
 import { MovieIndexActionTypes, PageApiResponse } from './types'
 
 // Here we use the `action` helper function provided by `typesafe-actions`.
@@ -6,6 +6,9 @@ import { MovieIndexActionTypes, PageApiResponse } from './types'
 // For more info: https://github.com/piotrwitek/typesafe-actions
 export const searchChange = (search: string) => action(MovieIndexActionTypes.SEARCH_CHANGED, search)
 export const pageChange = (index: number) => action(MovieIndexActionTypes.PAGE_CHANGED, index)
-export const fetchSearchRequest = (search: string) => action(MovieIndexActionTypes.FETCH_REQUEST, search)
-export const fetchSearchRequestSuccess = (data: PageApiResponse) => action(MovieIndexActionTypes.FETCH_SUCCESS, data)
-export const fetchSearchRequestError = (message: string) => action(MovieIndexActionTypes.FETCH_ERROR, message)
+
+const fetchSeachAction = createAsyncAction(
+  '@@movies/FETCH_REQUEST',
+  '@@movies/FETCH_SUCCESS',
+  '@@movies/FETCH_ERROR'
+)<string, PageApiResponse, string, undefined>()

@@ -74,7 +74,7 @@ const Header: React.SFC<HeaderProps> = ({ title }) => (
         </HeaderNavLink>
       </HeaderNav>
       <HeaderRight>
-        <CurrentTheme>for Mews Systems</CurrentTheme>
+        <CurrentTheme>for X Systems</CurrentTheme>
       </HeaderRight>
     </HeaderInner>
   </Wrapper>

@@ -70,15 +70,3 @@ export interface MovieInfoState {
   readonly data?: MovieInfo
   readonly errors?: string
 }
-
-// Use `enum`s for better autocompletion of action type names. These will
-// be compiled away leaving only the final value in your compiled code.
-//
-// Define however naming conventions you'd like for your action types, but
-// personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
-// of Redux's `@@INIT` action.
-export enum MovieInfoActionTypes {
-  FETCH_REQUEST = '@@movie/FETCH_REQUEST',
-  FETCH_SUCCESS = '@@movie/FETCH_SUCCESS',
-  FETCH_ERROR = '@@movie/FETCH_ERROR'
-}

@@ -15,8 +15,8 @@ const About = () => {
           </p>
           <p>
             This project is intended as a test task for position of a Frontend Developer at{' '}
-            <a href="https://github.com/MewsSystems/developers" target="blank" rel="noopener noreferrer">
-              MewsSystems
+            <a href="https://github.com/XSystems/developers" target="blank" rel="noopener noreferrer">
+              XSystems
             </a>
             .
           </p>

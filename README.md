@@ -8,7 +8,7 @@
 [ ] * think about storing constants?
 
 
-# Mews frontend developer task
+# X frontend developer task
 
 You should start with creating a fork of the repository. When you're finished with the task, you should create a pull request.
 

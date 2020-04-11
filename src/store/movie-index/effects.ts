@@ -74,8 +74,6 @@ function* watchPageChange() {
 }
 
 // We can also use `fork()` here to split our saga into multiple watchers.
-function* movieIndexSaga() {
+export default function* movieIndexSaga() {
   yield all([fork(watchSearchChange), fork(watchPageChange)])
 }
-
-export default movieIndexSaga

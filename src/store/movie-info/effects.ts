@@ -1,6 +1,6 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
-import { MovieInfoActionTypes } from './types'
-import { fetchInfoRequestError, fetchInfoRequestSuccess } from './actions'
+import { getType } from 'typesafe-actions'
+import { fetchInfoRequestError, fetchInfoRequestSuccess, fetchInfoRequest } from './actions'
 import { callApi, API_ENDPOINT, API_KEY } from '../../utils/api'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,7 +27,7 @@ function* handleFetch(action: any) {
 // This is our watcher function. We use `take*()` functions to watch Redux for a specific action
 // type, and run our saga, for example the `handleFetch()` saga above.
 function* watchFetchRequest() {
-  yield takeEvery(MovieInfoActionTypes.FETCH_REQUEST, handleFetch)
+  yield takeEvery(getType(fetchInfoRequest), handleFetch)
 }
 
 // We can also use `fork()` here to split our saga into multiple watchers.
