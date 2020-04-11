@@ -1,5 +1,5 @@
 import { darken } from 'polished'
-import { Theme } from '../../utils/styled'
+import { Theme } from '../../../utils/styled'
 import brandColors from '../colors/brandColors'
 
 const lightTheme: Theme = {

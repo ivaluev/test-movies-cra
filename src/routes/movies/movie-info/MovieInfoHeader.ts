@@ -1,5 +1,5 @@
 import { darken } from 'polished'
-import styled from '../../utils/styled'
+import styled from '../../../utils/styled'
 
 export const MovieInfobox = styled('div')`
   position: relative;

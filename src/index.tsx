@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { createBrowserHistory } from 'history'
-import App from './App'
+import App from './entry'
 import * as serviceWorker from './serviceWorker'
-import configureStore from './configureStore'
+import configureStore from './store/configureStore'
 
 import 'typeface-ibm-plex-sans'
 

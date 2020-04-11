@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ApplicationState } from '../../store'
-import { pageChange } from '../../store/movie-index/actions'
-import styled from '../../utils/styled'
+import { ApplicationState } from '../../../store'
+import { pageChange } from '../../../store/movie-index/actions'
+import styled from '../../../utils/styled'
 
 const MovieIndexPager = () => {
   const { page = 1, pagesTotal = 1 } = useSelector((state: ApplicationState) => state.movieIndex)
@@ -21,7 +21,11 @@ const MovieIndexPager = () => {
       <PaginationWrapper>
         {page > 1 && <PageNumber onClick={handlePagePrev}>← Previous</PageNumber>}
         <PageInfo>
-          {page} / {pagesTotal}
+          {page}
+          {' '}
+/
+          {' '}
+          {pagesTotal}
         </PageInfo>
         {hasNext && <PageNumber onClick={handlePageNext}>Next →</PageNumber>}
       </PaginationWrapper>

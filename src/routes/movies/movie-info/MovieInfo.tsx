@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Container from '../../layout/Container'
-import Page from '../../layout/Page'
-import styled from '../../utils/styled'
+import Container from '../../../components/layout/Container'
+import Page from '../../../components/layout/Page'
+import styled from '../../../utils/styled'
 import {
   MovieInfobox,
   MovieInfoboxBlurBackground,
@@ -14,13 +14,17 @@ import {
   MovieRoles,
   MovieReview
 } from './MovieInfoHeader'
-import { API_ENDPOINT_IMAGE } from '../../utils/api'
-import { MovieStatsInner, MovieStats, StatAttribute, Bullet } from './MovieInfoStats'
-import { MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName } from './MovieInfoDetails'
-import { Loading } from '../../layout/Loading'
-import { ApplicationState } from '../../store'
-import { fetchInfoRequest } from '../../store/movie-info/actions'
-import { MovieInfoState } from '../../store/movie-info/types'
+import { API_ENDPOINT_IMAGE } from '../../../utils/api'
+import {
+  MovieStatsInner, MovieStats, StatAttribute, Bullet
+} from './MovieInfoStats'
+import {
+  MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName
+} from './MovieInfoDetails'
+import { Loading } from '../../../components/layout/Loading'
+import { ApplicationState } from '../../../store'
+import { fetchInfoRequest } from '../../../store/movie-info/actions'
+import { MovieInfoState } from '../../../store/movie-info/types'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 type PropsFromDispatch = {
@@ -53,20 +57,28 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
                   <MovieInfoboxHeading>
                     <MovieName>{movie.title}</MovieName>
                     <MovieRoles>
-                      genres: <span>{movie.genres.map(g => g.name).join(', ')}</span>
+                      genres:
+                      {' '}
+                      <span>{movie.genres.map(g => g.name).join(', ')}</span>
                     </MovieRoles>
                     <MovieReview>{movie.overview}</MovieReview>
                   </MovieInfoboxHeading>
                   <MovieStats>
                     <MovieStatsInner>
                       <StatAttribute attr="str" isPrimaryAttr={movie.primary_attr === 'str'}>
-                        <Bullet attr="str" /> {movie.vote_count || 0}
+                        <Bullet attr="str" />
+                        {' '}
+                        {movie.vote_count || 0}
                       </StatAttribute>
                       <StatAttribute attr="agi" isPrimaryAttr={movie.primary_attr === 'agi'}>
-                        <Bullet attr="agi" /> {movie.vote_average || 0}
+                        <Bullet attr="agi" />
+                        {' '}
+                        {movie.vote_average || 0}
                       </StatAttribute>
                       <StatAttribute attr="int" isPrimaryAttr={movie.primary_attr === 'int'}>
-                        <Bullet attr="int" /> {movie.popularity || 0}
+                        <Bullet attr="int" />
+                        {' '}
+                        {movie.popularity || 0}
                       </StatAttribute>
                     </MovieStatsInner>
                   </MovieStats>
@@ -75,29 +87,44 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
               <MovieDetails>
                 <MovieDetailsColumn>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Release Date:</MovieDetailsAttrName> {movie.release_date || '-'}
+                    <MovieDetailsAttrName>Release Date:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.release_date || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Budget:</MovieDetailsAttrName> {movie.budget || '-'}
+                    <MovieDetailsAttrName>Budget:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.budget || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Revenue:</MovieDetailsAttrName> {movie.revenue || '-'}
+                    <MovieDetailsAttrName>Revenue:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.revenue || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Runtime:</MovieDetailsAttrName> {movie.runtime || '-'}
+                    <MovieDetailsAttrName>Runtime:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.runtime || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Spoken Languages:</MovieDetailsAttrName>{' '}
+                    <MovieDetailsAttrName>Spoken Languages:</MovieDetailsAttrName>
+                    {' '}
                     {movie.spoken_languages?.map(l => l.name).join(', ') || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Original Language:</MovieDetailsAttrName> {movie.original_language || '-'}
+                    <MovieDetailsAttrName>Original Language:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.original_language || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Original Title:</MovieDetailsAttrName> {movie.original_title || '-'}
+                    <MovieDetailsAttrName>Original Title:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.original_title || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Tagline:</MovieDetailsAttrName> {movie.tagline || '-'}
+                    <MovieDetailsAttrName>Tagline:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.tagline || '-'}
                   </MovieDetailsRow>
                 </MovieDetailsColumn>
                 <MovieDetailsColumn>
@@ -116,16 +143,24 @@ const MovieInfo = ({ loading, data: movie, fetchRequest }: AllProps) => {
                       .join(', ') || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Homepage:</MovieDetailsAttrName> {movie.homepage || '-'}
+                    <MovieDetailsAttrName>Homepage:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.homepage || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>IMDB id:</MovieDetailsAttrName> {movie.imdb_id || '-'}
+                    <MovieDetailsAttrName>IMDB id:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.imdb_id || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Status:</MovieDetailsAttrName> {movie.status || '-'}
+                    <MovieDetailsAttrName>Status:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.status || '-'}
                   </MovieDetailsRow>
                   <MovieDetailsRow>
-                    <MovieDetailsAttrName>Video:</MovieDetailsAttrName> {movie.video ? 'yes' : 'no'}
+                    <MovieDetailsAttrName>Video:</MovieDetailsAttrName>
+                    {' '}
+                    {movie.video ? 'yes' : 'no'}
                   </MovieDetailsRow>
                 </MovieDetailsColumn>
               </MovieDetails>

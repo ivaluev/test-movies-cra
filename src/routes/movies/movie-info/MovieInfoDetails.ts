@@ -1,5 +1,5 @@
 import { transparentize } from 'polished'
-import styled from '../../utils/styled'
+import styled from '../../../utils/styled'
 
 export const MovieDetailsAttrName = styled('span')`
   color: ${props => transparentize(0.25, props.theme.colors.body)};

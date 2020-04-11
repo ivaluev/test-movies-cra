@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styled from '../utils/styled'
+import styled from '../../utils/styled'
 import Container from './Container'
 
 interface HeaderProps {

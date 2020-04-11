@@ -1,4 +1,4 @@
-import styled from '../../utils/styled'
+import styled from '../../../utils/styled'
 
 export const TableWrapper = styled.div`
   position: relative;

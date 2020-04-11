@@ -1,13 +1,15 @@
 import React from 'react'
 import { Global } from '@emotion/core'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Root from './layout/Root'
-import normalize from './styles/normalize'
-import globals from './styles/globals'
-import Header from './layout/Header'
+import {
+  BrowserRouter as Router, Switch, Route, Redirect
+} from 'react-router-dom'
+import Root from '../components/layout/Root'
+import normalize from '../assets/styles/normalize'
+import globals from '../assets/styles/globals'
+import Header from '../components/layout/Header'
 
-import Movies from './pages/Movies'
-import About from './pages/About'
+import Movies from './movies'
+import About from './about/about'
 
 export default function AppRoutes() {
   return (
