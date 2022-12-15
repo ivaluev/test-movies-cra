@@ -59,6 +59,7 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  align-items: center;
   /* background-color: whitesmoke; */
 `
 
