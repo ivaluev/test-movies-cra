@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import Container from './Container'
@@ -66,10 +66,10 @@ const Header: React.FC<HeaderProps> = ({title}) => (
         <Title>{title}</Title>
       </HeaderLeft>
       <HeaderNav>
-        <HeaderNavLink to="/movies" activeClassName="is-active">
+        <HeaderNavLink to="/movies" className="is-active">
           Movies
         </HeaderNavLink>
-        <HeaderNavLink to="/about" activeClassName="is-active">
+        <HeaderNavLink to="/about" className={({isActive}) => (isActive ? 'is-active' : undefined)}>
           About
         </HeaderNavLink>
       </HeaderNav>
