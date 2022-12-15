@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {createBrowserHistory} from 'history'
 import App from './entry'
 import configureStore from './store/configureStore'
+import { BrowserRouter } from 'react-router-dom'
 
 import 'typeface-ibm-plex-sans'
 

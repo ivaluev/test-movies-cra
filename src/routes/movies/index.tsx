@@ -1,16 +1,16 @@
-import {Route, Switch} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import MovieIndex from './movie-index/MovieIndex'
 import MovieInfo from './movie-info/MovieInfo'
 
 const Movies = () => (
-  <Switch>
-    <Route path="/movies" exact>
+  <Routes>
+    <Route path="/movies">
       <MovieIndex />
     </Route>
     <Route path="/movies/:id">
       <MovieInfo />
     </Route>
-  </Switch>
+  </Routes>
 )
 
 export default Movies
