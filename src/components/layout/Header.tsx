@@ -1,6 +1,6 @@
+import styled from "@emotion/styled"
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import styled from '../../utils/styled'
 import Container from './Container'
 
 interface HeaderProps {
@@ -59,7 +59,7 @@ const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
 
-const Header: React.SFC<HeaderProps> = ({title}) => (
+const Header: React.FC<HeaderProps> = ({title}) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>

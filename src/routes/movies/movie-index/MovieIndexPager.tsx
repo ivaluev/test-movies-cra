@@ -1,7 +1,7 @@
+import styled from "@emotion/styled"
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../../../store'
 import {pageChange} from '../../../store/movie-index/actions'
-import styled from '../../../utils/styled'
 
 const MovieIndexPager = () => {
   const {page = 1, pagesTotal = 1} = useSelector((state: ApplicationState) => state.movieIndex)

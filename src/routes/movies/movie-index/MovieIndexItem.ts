@@ -1,4 +1,4 @@
-import styled from '../../../utils/styled'
+import styled from "@emotion/styled"
 
 export const TableWrapper = styled.div`
   position: relative;
@@ -30,7 +30,7 @@ export const MovieIconPh = styled.div`
   height: 32px;
 `
 
-export const MovieName = styled('div')`
+export const MovieName = styled.div`
   flex: 1 1 auto;
   height: 100%;
   margin-left: 1rem;

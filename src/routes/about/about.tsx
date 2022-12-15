@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import Container from '../../components/layout/Container'
 import Page from '../../components/layout/Page'
-import styled from '../../utils/styled'
 
 const About = () => (
   <Page>

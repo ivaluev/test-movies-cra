@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from '../../utils/styled'
+import styled from "@emotion/styled"
+import React, {ReactNode} from 'react'
 
 interface DataTableProps {
   columns: string[]
   widths?: string[]
+  children?: ReactNode
 }
 
 const DataTable: React.FC<DataTableProps> = ({children, columns, widths}) => (

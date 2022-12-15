@@ -1,3 +1,4 @@
+import styled from "@emotion/styled"
 import {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
@@ -8,7 +9,6 @@ import {ApplicationState} from '../../../store'
 import {fetchInfoRequest} from '../../../store/movie-info/actions'
 import {MovieInfoState} from '../../../store/movie-info/types'
 import {API_ENDPOINT_IMAGE} from '../../../utils/api'
-import styled from '../../../utils/styled'
 import {
   MovieDetails,
   MovieDetailsAttrName,

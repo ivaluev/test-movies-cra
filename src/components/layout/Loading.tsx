@@ -1,9 +1,7 @@
 import {keyframes} from '@emotion/react'
 import {transparentize} from 'polished'
-import * as React from 'react'
-import styled from '../../utils/styled'
 
-export const LoadingSpinner: React.SFC = () => (
+export const LoadingSpinner = () => (
   <Spinner>
     <div className="cube1" />
     <div className="cube2" />

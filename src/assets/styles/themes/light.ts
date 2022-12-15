@@ -1,5 +1,5 @@
+import {Theme} from "@emotion/react"
 import {darken} from 'polished'
-import {Theme} from '../../../utils/styled'
 import brandColors from '../colors/brandColors'
 
 const lightTheme: Theme = {
