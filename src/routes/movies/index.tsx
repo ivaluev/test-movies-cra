@@ -4,12 +4,8 @@ import MovieInfo from './movie-info/MovieInfo'
 
 const Movies = () => (
   <Routes>
-    <Route path="/movies">
-      <MovieIndex />
-    </Route>
-    <Route path="/movies/:id">
-      <MovieInfo />
-    </Route>
+    <Route path="/" element={<MovieIndex />} />
+    <Route path="/:id" element={<MovieInfo />} />
   </Routes>
 )
 
