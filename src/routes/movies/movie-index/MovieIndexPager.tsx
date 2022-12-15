@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../../../store'
 import {pageChange} from '../../../store/movie-index/actions'

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 import {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'

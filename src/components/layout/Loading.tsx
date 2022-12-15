@@ -1,5 +1,5 @@
 import {keyframes} from '@emotion/react'
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 import {transparentize} from 'polished'
 
 export const LoadingSpinner = () => (

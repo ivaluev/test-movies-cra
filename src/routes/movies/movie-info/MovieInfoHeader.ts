@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled'
 import {darken} from 'polished'
 
 export const MovieInfobox = styled('div')`

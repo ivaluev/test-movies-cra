@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@lagunovsky/redux-react-router": "^4.3.0",
     "@testing-library/jest-dom": "^5.16.5",
     "awesome-debounce-promise": "^2.1.0",
     "connected-react-router": "^6.9.3",
