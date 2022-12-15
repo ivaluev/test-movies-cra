@@ -3,7 +3,6 @@ import {getType} from 'typesafe-actions'
 import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
 import {fetchInfoRequest, fetchInfoRequestError, fetchInfoRequestSuccess} from './actions'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function* handleFetch(action: any) {
   try {
     // To call async functions, use redux-saga's `call()`.

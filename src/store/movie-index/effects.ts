@@ -12,7 +12,6 @@ function getSearchUrl(searchTerm: string, page: number) {
   return searchUrl
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function* handleSearchChange(action: any) {
   try {
     if (!action.payload) {
@@ -49,7 +48,6 @@ function* watchSearchChange() {
   yield takeLatest(getType(searchChange), handleSearchChange)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function* handlePageChange(action: any) {
   try {
     const search = yield select(state => state.movieIndex.search)

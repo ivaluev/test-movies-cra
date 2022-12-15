@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import {Search} from 'emotion-icons/fa-solid'
-import {Close} from 'emotion-icons/ion-md'
+import {Search} from '@emotion-icons/fa-solid'
+import {Close} from '@emotion-icons/ionicons-outline/Close'
 import {desaturate} from 'polished'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
@@ -9,7 +9,6 @@ import brandColors from '../../../assets/styles/colors/brandColors'
 import {ApplicationState} from '../../../store'
 import {searchChange} from '../../../store/movie-index/actions'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setSearchState = (fn: () => void) => fn()
 const setSearchStateDebounced = AwesomeDebouncePromise(setSearchState, 1200)
 
@@ -50,7 +49,7 @@ export const MovieSearchBox = () => {
       />
       <IconClose
         onClick={clearSearch}
-        style={{visibility: searchLocal && searchLocal.length ? '' : 'hidden'}}
+        style={{visibility: searchLocal && searchLocal.length ? 'visible' : 'hidden'}}
       />
     </SearchContainer>
   )
