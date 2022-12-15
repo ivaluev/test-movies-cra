@@ -1,4 +1,4 @@
-import {connectRouter, RouterState} from 'connected-react-router'
+import {createRouterReducer, ReduxRouterState} from '@lagunovsky/redux-react-router'
 import {History} from 'history'
 import {combineReducers} from 'redux'
 import {all, fork} from 'redux-saga/effects'
@@ -13,7 +13,7 @@ import {MovieInfoState} from './movie-info/types'
 
 // The top-level state object
 export interface ApplicationState {
-  router: RouterState
+  router: ReduxRouterState
   movieIndex: MovieIndexState
   movieInfo: MovieInfoState
 }
@@ -23,7 +23,7 @@ export interface ApplicationState {
 // the reducer acts on the corresponding ApplicationState property type.
 export const createRootReducer = (history: History) =>
   combineReducers({
-    router: connectRouter(history),
+    router: createRouterReducer(history),
     movieIndex: movieIndexReducer,
     movieInfo: movieInfoReducer,
   })

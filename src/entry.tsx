@@ -1,5 +1,5 @@
 import {ThemeProvider} from '@emotion/react'
-import {ConnectedRouter} from 'connected-react-router'
+import {ReduxRouter} from '@lagunovsky/redux-react-router'
 import {History} from 'history'
 import {Provider} from 'react-redux'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
@@ -24,11 +24,11 @@ interface AppProps {
 
 const App = ({store, history}: AppProps) => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <ReduxRouter history={history}>
       <ThemeProvider theme={lightTheme}>
         <RouterProvider router={router} />
       </ThemeProvider>
-    </ConnectedRouter>
+    </ReduxRouter>
   </Provider>
 )
 
