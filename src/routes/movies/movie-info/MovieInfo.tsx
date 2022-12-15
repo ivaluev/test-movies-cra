@@ -2,13 +2,13 @@ import styled from '@emotion/styled'
 import {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import Container from '../../../components/layout/Container'
-import {Loading} from '../../../components/layout/Loading'
-import Page from '../../../components/layout/Page'
+import Container from '../../../common/components/layout/Container'
+import {Loading} from '../../../common/components/layout/Loading'
+import Page from '../../../common/components/layout/Page'
 import {ApplicationState} from '../../../store'
 import {fetchInfoRequest} from '../../../store/movie-info/actions'
 import {MovieInfoState} from '../../../store/movie-info/types'
-import {API_ENDPOINT_IMAGE} from '../../../utils/api'
+import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {
   MovieDetails,
   MovieDetailsAttrName,

@@ -1,6 +1,6 @@
 import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects'
 import {getType} from 'typesafe-actions'
-import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
+import {API_ENDPOINT, API_KEY, callApi} from '../../common/utils/api'
 import {fetchSearchAction, pageChange, searchChange} from './actions'
 import {PageApiResponse} from './types'
 

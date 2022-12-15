@@ -5,7 +5,7 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import {desaturate} from 'polished'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import brandColors from '../../../assets/styles/colors/brandColors'
+import brandColors from '../../../theme/colors/brandColors'
 import {ApplicationState} from '../../../store'
 import {searchChange} from '../../../store/movie-index/actions'
 

@@ -1,6 +1,6 @@
 import {all, call, fork, put, takeEvery} from 'redux-saga/effects'
 import {getType} from 'typesafe-actions'
-import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
+import {API_ENDPOINT, API_KEY, callApi} from '../../common/utils/api'
 import {fetchInfoRequest, fetchInfoRequestError, fetchInfoRequestSuccess} from './actions'
 import {MovieInfo} from './types'
 

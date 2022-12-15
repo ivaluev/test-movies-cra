@@ -1,12 +1,12 @@
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import DataTable from '../../../components/controls/DataTable'
-import Container from '../../../components/layout/Container'
-import {Loading} from '../../../components/layout/Loading'
-import Page from '../../../components/layout/Page'
+import DataTable from '../../../common/components/controls/DataTable'
+import Container from '../../../common/components/layout/Container'
+import {Loading} from '../../../common/components/layout/Loading'
+import Page from '../../../common/components/layout/Page'
 import {ApplicationState} from '../../../store'
 import {MovieIndexItem} from '../../../store/movie-index/types'
-import {API_ENDPOINT_IMAGE} from '../../../utils/api'
+import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {
   MovieIcon,
   MovieIconPh,

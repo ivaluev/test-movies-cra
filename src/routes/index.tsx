@@ -1,9 +1,9 @@
 import {Global} from '@emotion/react'
 import {Navigate, Route, Routes} from 'react-router-dom'
-import globals from '../assets/styles/globals'
-import normalize from '../assets/styles/normalize'
-import Header from '../components/layout/Header'
-import Root from '../components/layout/Root'
+import globals from '../theme/globals'
+import normalize from '../theme/normalize'
+import Header from '../common/components/layout/Header'
+import Root from '../common/components/layout/Root'
 import About from './about/about'
 import Movies from './movies'
 
