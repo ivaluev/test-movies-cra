@@ -6,12 +6,12 @@ interface DataTableProps {
   widths?: string[]
 }
 
-const DataTable: React.FC<DataTableProps> = ({ children, columns, widths }) => (
+const DataTable: React.FC<DataTableProps> = ({children, columns, widths}) => (
   <Wrapper>
     <thead>
       <tr>
         {columns.map((column, i) => (
-          <th key={column} style={widths && widths[i] ? { width: widths[i] } : undefined}>
+          <th key={column} style={widths && widths[i] ? {width: widths[i]} : undefined}>
             {column}
           </th>
         ))}

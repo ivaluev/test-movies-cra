@@ -1,15 +1,18 @@
-import { getType, ActionType } from 'typesafe-actions'
+import {getType, ActionType} from 'typesafe-actions'
 import produce from 'immer'
 import * as actions from './actions'
-import { MovieInfoState } from './types'
+import {MovieInfoState} from './types'
 
 export const initialState: MovieInfoState = {
   data: undefined,
   errors: undefined,
-  loading: false
+  loading: false,
 }
 
-export function movieInfoReducer(state = initialState, action: ActionType<typeof actions>): MovieInfoState {
+export function movieInfoReducer(
+  state = initialState,
+  action: ActionType<typeof actions>
+): MovieInfoState {
   return produce(state, draft => {
     switch (action.type) {
       case getType(actions.fetchInfoRequest): {

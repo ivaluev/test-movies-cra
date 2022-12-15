@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Search } from 'emotion-icons/fa-solid'
-import { Close } from 'emotion-icons/ion-md'
-import { desaturate } from 'polished'
+import React, {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {Search} from 'emotion-icons/fa-solid'
+import {Close} from 'emotion-icons/ion-md'
+import {desaturate} from 'polished'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import styled from '../../../utils/styled'
 import brandColors from '../../../assets/styles/colors/brandColors'
-import { searchChange } from '../../../store/movie-index/actions'
-import { ApplicationState } from '../../../store'
+import {searchChange} from '../../../store/movie-index/actions'
+import {ApplicationState} from '../../../store'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setSearchState = (fn: () => void) => fn()
@@ -18,7 +18,7 @@ const colorActive = brandColors.red
 
 export const MovieSearchBox = () => {
   const dispatch = useDispatch()
-  const { search } = useSelector((state: ApplicationState) => state.movieIndex)
+  const {search} = useSelector((state: ApplicationState) => state.movieIndex)
 
   const [searchLocal, setSearchLocal] = useState(search || '')
   const [searchIsActive, setSearchIsActive] = useState(false)
@@ -38,7 +38,7 @@ export const MovieSearchBox = () => {
   }
 
   return (
-    <SearchContainer style={{ backgroundColor: searchIsActive ? '#e5e5e3' : '' }}>
+    <SearchContainer style={{backgroundColor: searchIsActive ? '#e5e5e3' : ''}}>
       <SearchIcon color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"
@@ -48,7 +48,10 @@ export const MovieSearchBox = () => {
         onFocus={() => setSearchIsActive(true)}
         onBlur={() => setSearchIsActive(false)}
       />
-      <IconClose onClick={clearSearch} style={{ visibility: searchLocal && searchLocal.length ? '' : 'hidden' }} />
+      <IconClose
+        onClick={clearSearch}
+        style={{visibility: searchLocal && searchLocal.length ? '' : 'hidden'}}
+      />
     </SearchContainer>
   )
 }

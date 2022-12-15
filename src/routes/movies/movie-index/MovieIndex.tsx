@@ -1,17 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import Page from '../../../components/layout/Page'
 import Container from '../../../components/layout/Container'
 import DataTable from '../../../components/controls/DataTable'
-import { Loading } from '../../../components/layout/Loading'
-import { API_ENDPOINT_IMAGE } from '../../../utils/api'
-import { ApplicationState } from '../../../store'
-import { MovieIndexItem } from '../../../store/movie-index/types'
+import {Loading} from '../../../components/layout/Loading'
+import {API_ENDPOINT_IMAGE} from '../../../utils/api'
+import {ApplicationState} from '../../../store'
+import {MovieIndexItem} from '../../../store/movie-index/types'
 import {
-  MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh
+  MovieLoading,
+  MovieIndexDetail,
+  MovieIcon,
+  TableWrapper,
+  MovieName,
+  MovieIconPh,
 } from './MovieIndexItem'
-import { MovieSearchBox } from './MovieIndexSearch'
+import {MovieSearchBox} from './MovieIndexSearch'
 import MovieIndexPager from './MovieIndexPager'
 
 type MovieIndexProps = {
@@ -20,7 +25,7 @@ type MovieIndexProps = {
   errors?: string
 }
 
-const MovieIndex = ({ results, loading }: MovieIndexProps) => {
+const MovieIndex = ({results, loading}: MovieIndexProps) => {
   function renderData() {
     return (
       <DataTable columns={['Movie', 'Release Date', 'Popularity']} widths={['auto', '', '']}>
@@ -32,7 +37,12 @@ const MovieIndex = ({ results, loading }: MovieIndexProps) => {
         {results.map(movie => (
           <tr key={movie.id}>
             <MovieIndexDetail>
-              {movie.poster_path && <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />}
+              {movie.poster_path && (
+                <MovieIcon
+                  src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              )}
               {!movie.poster_path && <MovieIconPh />}
               <MovieName>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
@@ -61,10 +71,10 @@ const MovieIndex = ({ results, loading }: MovieIndexProps) => {
   )
 }
 
-const mapStateToProps = ({ movieIndex }: ApplicationState) => ({
+const mapStateToProps = ({movieIndex}: ApplicationState) => ({
   loading: movieIndex.loading,
   results: movieIndex.results || [],
-  errors: movieIndex.errors
+  errors: movieIndex.errors,
 })
 
 export default connect(mapStateToProps)(MovieIndex)

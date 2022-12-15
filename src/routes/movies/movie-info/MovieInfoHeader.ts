@@ -1,4 +1,4 @@
-import { darken } from 'polished'
+import {darken} from 'polished'
 import styled from '../../../utils/styled'
 
 export const MovieInfobox = styled('div')`

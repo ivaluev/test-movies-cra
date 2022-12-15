@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import styled from '../../utils/styled'
 import Container from './Container'
 
@@ -59,7 +59,7 @@ const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
 
-const Header: React.SFC<HeaderProps> = ({ title }) => (
+const Header: React.SFC<HeaderProps> = ({title}) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>

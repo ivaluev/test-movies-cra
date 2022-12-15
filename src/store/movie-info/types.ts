@@ -1,4 +1,4 @@
-import { ApiResponse } from '../movie-index/types'
+import {ApiResponse} from '../movie-index/types'
 
 export type MovieCollection = {
   id: number

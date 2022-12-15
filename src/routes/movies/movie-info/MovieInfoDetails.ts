@@ -1,4 +1,4 @@
-import { transparentize } from 'polished'
+import {transparentize} from 'polished'
 import styled from '../../../utils/styled'
 
 export const MovieDetailsAttrName = styled('span')`

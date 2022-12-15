@@ -1,8 +1,6 @@
 import React from 'react'
-import { Global } from '@emotion/core'
-import {
-  BrowserRouter as Router, Switch, Route, Redirect
-} from 'react-router-dom'
+import {Global} from '@emotion/core'
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Root from '../components/layout/Root'
 import normalize from '../assets/styles/normalize'
 import globals from '../assets/styles/globals'

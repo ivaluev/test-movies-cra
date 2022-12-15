@@ -1,13 +1,16 @@
-import { Store, createStore, applyMiddleware } from 'redux'
+import {Store, createStore, applyMiddleware} from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { routerMiddleware } from 'connected-react-router'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { History } from 'history'
+import {routerMiddleware} from 'connected-react-router'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import {History} from 'history'
 
 // Import the state interface and our combined reducers/sagas.
-import { ApplicationState, createRootReducer, rootSaga } from '.'
+import {ApplicationState, createRootReducer, rootSaga} from '.'
 
-export default function configureStore(history: History, initialState: ApplicationState): Store<ApplicationState> {
+export default function configureStore(
+  history: History,
+  initialState: ApplicationState
+): Store<ApplicationState> {
   // create the composing function for our middlewares
   const composeEnhancers = composeWithDevTools({})
   // create the redux-saga middleware

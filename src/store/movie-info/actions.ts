@@ -1,5 +1,5 @@
-import { createAction } from 'typesafe-actions'
-import { MovieInfo } from './types'
+import {createAction} from 'typesafe-actions'
+import {MovieInfo} from './types'
 
 // export const fetchInfoRequest = createAction('@@movie/FETCH_REQUEST', action => {
 //   return (id: number) => action(id)

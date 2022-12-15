@@ -11,7 +11,7 @@ const brandColors = {
   white: '#fefefe',
   yellow: '#f3df49',
   red: '#eb5558',
-  green: '#9ee79a'
+  green: '#9ee79a',
 }
 
 export default brandColors

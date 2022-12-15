@@ -1,0 +1,11 @@
+functions/lib
+functions/node_modules
+common/lib
+common/node_modules
+node_modules
+.next
+dist
+build
+
+# Ignore all HTML files:
+*.html

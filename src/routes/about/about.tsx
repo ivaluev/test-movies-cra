@@ -9,25 +9,28 @@ const About = () => (
       <PageContent>
         <h1>Welcome!</h1>
         <p>
-            Welcome to the Redux 4.0.7 + TypeScript 3.8.2 example! This example site shows you the ideal project structure, recommended
-            libraries, as well as design pattern on writing type-safe React + Redux app with TypeScript.
+          Welcome to the Redux 4.0.7 + TypeScript 3.8.2 example! This example site shows you the
+          ideal project structure, recommended libraries, as well as design pattern on writing
+          type-safe React + Redux app with TypeScript.
         </p>
         <p>
-            This project is intended as a test task for position of a Frontend Developer at
-          {' '}
+          This project is intended as a test task for position of a Frontend Developer at{' '}
           <a href="https://github.com/XSystems/developers" target="blank" rel="noopener noreferrer">
-              XSystems
+            XSystems
           </a>
-            .
+          .
         </p>
         <p>
-            To demonstrate it, I created a website which pulls data from the
-          {' '}
-          <a href="https://developers.themoviedb.org/3/getting-started/introduction" target="blank" rel="noopener noreferrer">
-              The MovieDB API
+          To demonstrate it, I created a website which pulls data from the{' '}
+          <a
+            href="https://developers.themoviedb.org/3/getting-started/introduction"
+            target="blank"
+            rel="noopener noreferrer"
+          >
+            The MovieDB API
           </a>
-            , via search box and display a information about movies. This will also demonstrate how to structure your stores for each
-            feature/module in a Redux-enabled app.
+          , via search box and display a information about movies. This will also demonstrate how to
+          structure your stores for each feature/module in a Redux-enabled app.
         </p>
         <p>Enjoy your stay!</p>
       </PageContent>
