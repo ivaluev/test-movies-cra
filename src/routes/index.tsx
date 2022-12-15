@@ -1,13 +1,12 @@
-import React from 'react'
-import {Global} from '@emotion/core'
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
-import Root from '../components/layout/Root'
-import normalize from '../assets/styles/normalize'
+import {Global} from '@emotion/react'
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
 import globals from '../assets/styles/globals'
+import normalize from '../assets/styles/normalize'
 import Header from '../components/layout/Header'
+import Root from '../components/layout/Root'
 
-import Movies from './movies'
 import About from './about/about'
+import Movies from './movies'
 
 export default function AppRoutes() {
   return (

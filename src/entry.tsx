@@ -1,10 +1,10 @@
-import React from 'react'
-import {History} from 'history'
+import {ThemeProvider} from '@emotion/react'
 import {ConnectedRouter} from 'connected-react-router'
-import {Store} from 'redux'
+import {History} from 'history'
 import {Provider} from 'react-redux'
-import AppRoutes from './routes'
+import {Store} from 'redux'
 import lightTheme from './assets/styles/themes/light'
+import AppRoutes from './routes'
 import {ApplicationState} from './store'
 
 interface AppProps {

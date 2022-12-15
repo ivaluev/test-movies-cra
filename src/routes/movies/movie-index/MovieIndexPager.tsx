@@ -1,4 +1,3 @@
-import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../../../store'
 import {pageChange} from '../../../store/movie-index/actions'

@@ -1,8 +1,8 @@
-import {Store, createStore, applyMiddleware} from 'redux'
-import createSagaMiddleware from 'redux-saga'
 import {routerMiddleware} from 'connected-react-router'
-import {composeWithDevTools} from 'redux-devtools-extension'
 import {History} from 'history'
+import {applyMiddleware, createStore, Store} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import createSagaMiddleware from 'redux-saga'
 
 // Import the state interface and our combined reducers/sagas.
 import {ApplicationState, createRootReducer, rootSaga} from '.'

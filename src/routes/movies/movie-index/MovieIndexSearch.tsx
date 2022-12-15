@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import {Search} from 'emotion-icons/fa-solid'
 import {Close} from 'emotion-icons/ion-md'
 import {desaturate} from 'polished'
-import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import styled from '../../../utils/styled'
+import {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import brandColors from '../../../assets/styles/colors/brandColors'
-import {searchChange} from '../../../store/movie-index/actions'
 import {ApplicationState} from '../../../store'
+import {searchChange} from '../../../store/movie-index/actions'
+import styled from '../../../utils/styled'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setSearchState = (fn: () => void) => fn()

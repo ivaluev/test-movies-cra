@@ -1,6 +1,6 @@
-import * as React from 'react'
-import {keyframes} from '@emotion/core'
+import {keyframes} from '@emotion/react'
 import {transparentize} from 'polished'
+import * as React from 'react'
 import styled from '../../utils/styled'
 
 export const LoadingSpinner: React.SFC = () => (

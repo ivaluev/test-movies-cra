@@ -1,7 +1,7 @@
 import produce from 'immer'
-import {getType, ActionType} from 'typesafe-actions'
-import {MovieIndexState, PageApiResponse} from './types'
+import {ActionType, getType} from 'typesafe-actions'
 import * as actions from './actions'
+import {MovieIndexState, PageApiResponse} from './types'
 
 // Type-safe initialState!
 export const initialState: MovieIndexState = {

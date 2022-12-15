@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import {all, call, fork, put, takeLatest, select} from 'redux-saga/effects'
+import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects'
 import {getType} from 'typesafe-actions'
+import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
+import {fetchSearchAction, pageChange, searchChange} from './actions'
 import {PageApiResponse} from './types'
-import {fetchSearchAction, searchChange, pageChange} from './actions'
-import {callApi, API_ENDPOINT, API_KEY} from '../../utils/api'
 
 function getSearchUrl(searchTerm: string, page: number) {
   const seachConcatenated = searchTerm.split(' ').join('+')

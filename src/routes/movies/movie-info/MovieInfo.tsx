@@ -1,31 +1,31 @@
-import React, {useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useEffect} from 'react'
 import {connect} from 'react-redux'
+import {useParams} from 'react-router-dom'
 import Container from '../../../components/layout/Container'
-import Page from '../../../components/layout/Page'
-import styled from '../../../utils/styled'
-import {
-  MovieInfobox,
-  MovieInfoboxBlurBackground,
-  MovieInfoboxInner,
-  MovieInfoboxImage,
-  MovieInfoboxHeading,
-  MovieName,
-  MovieRoles,
-  MovieReview,
-} from './MovieInfoHeader'
-import {API_ENDPOINT_IMAGE} from '../../../utils/api'
-import {MovieStatsInner, MovieStats, StatAttribute, Bullet} from './MovieInfoStats'
-import {
-  MovieDetails,
-  MovieDetailsColumn,
-  MovieDetailsRow,
-  MovieDetailsAttrName,
-} from './MovieInfoDetails'
 import {Loading} from '../../../components/layout/Loading'
+import Page from '../../../components/layout/Page'
 import {ApplicationState} from '../../../store'
 import {fetchInfoRequest} from '../../../store/movie-info/actions'
 import {MovieInfoState} from '../../../store/movie-info/types'
+import {API_ENDPOINT_IMAGE} from '../../../utils/api'
+import styled from '../../../utils/styled'
+import {
+  MovieDetails,
+  MovieDetailsAttrName,
+  MovieDetailsColumn,
+  MovieDetailsRow,
+} from './MovieInfoDetails'
+import {
+  MovieInfobox,
+  MovieInfoboxBlurBackground,
+  MovieInfoboxHeading,
+  MovieInfoboxImage,
+  MovieInfoboxInner,
+  MovieName,
+  MovieReview,
+  MovieRoles,
+} from './MovieInfoHeader'
+import {Bullet, MovieStats, MovieStatsInner, StatAttribute} from './MovieInfoStats'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 type PropsFromDispatch = {

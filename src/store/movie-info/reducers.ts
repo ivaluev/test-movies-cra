@@ -1,5 +1,5 @@
-import {getType, ActionType} from 'typesafe-actions'
 import produce from 'immer'
+import {ActionType, getType} from 'typesafe-actions'
 import * as actions from './actions'
 import {MovieInfoState} from './types'
 

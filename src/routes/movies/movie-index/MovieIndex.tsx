@@ -1,23 +1,22 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import Page from '../../../components/layout/Page'
-import Container from '../../../components/layout/Container'
+import {Link} from 'react-router-dom'
 import DataTable from '../../../components/controls/DataTable'
+import Container from '../../../components/layout/Container'
 import {Loading} from '../../../components/layout/Loading'
-import {API_ENDPOINT_IMAGE} from '../../../utils/api'
+import Page from '../../../components/layout/Page'
 import {ApplicationState} from '../../../store'
 import {MovieIndexItem} from '../../../store/movie-index/types'
+import {API_ENDPOINT_IMAGE} from '../../../utils/api'
 import {
-  MovieLoading,
-  MovieIndexDetail,
   MovieIcon,
-  TableWrapper,
-  MovieName,
   MovieIconPh,
+  MovieIndexDetail,
+  MovieLoading,
+  MovieName,
+  TableWrapper,
 } from './MovieIndexItem'
-import {MovieSearchBox} from './MovieIndexSearch'
 import MovieIndexPager from './MovieIndexPager'
+import {MovieSearchBox} from './MovieIndexSearch'
 
 type MovieIndexProps = {
   loading: boolean
