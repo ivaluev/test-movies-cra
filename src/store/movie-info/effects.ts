@@ -2,17 +2,18 @@ import {all, call, fork, put, takeEvery} from 'redux-saga/effects'
 import {getType} from 'typesafe-actions'
 import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
 import {fetchInfoRequest, fetchInfoRequestError, fetchInfoRequestSuccess} from './actions'
+import {MovieInfo} from "./types"
 
 function* handleFetch(action: any) {
   try {
     // To call async functions, use redux-saga's `call()`.
     const url = `${API_ENDPOINT}/movie/${action.payload}?api_key=${API_KEY}`
-    const res = yield call(callApi, 'get', url)
+    const res: MovieInfo | {error: string} = yield call(callApi, 'get', url)
 
     if (res.error) {
       yield put(fetchInfoRequestError(res.error))
     } else {
-      yield put(fetchInfoRequestSuccess(res))
+      yield put(fetchInfoRequestSuccess(res as MovieInfo))
     }
   } catch (err) {
     if (err instanceof Error && err.stack) {

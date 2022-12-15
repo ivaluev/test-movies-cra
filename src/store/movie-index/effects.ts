@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects'
 import {getType} from 'typesafe-actions'
 import {API_ENDPOINT, API_KEY, callApi} from '../../utils/api'
@@ -50,7 +49,7 @@ function* watchSearchChange() {
 
 function* handlePageChange(action: any) {
   try {
-    const search = yield select(state => state.movieIndex.search)
+    const search: string = yield select(state => state.movieIndex.search)
     const searchUrl = getSearchUrl(search, action.payload)
     // To call async functions, use redux-saga's `call()`.
     const res: PageApiResponse = yield call(callApi, 'get', searchUrl)
