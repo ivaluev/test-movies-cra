@@ -5,10 +5,10 @@ import {useParams} from 'react-router-dom'
 import Container from '../../../common/components/layout/Container'
 import {Loading} from '../../../common/components/layout/Loading'
 import Page from '../../../common/components/layout/Page'
+import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {ApplicationState} from '../../../store'
 import {fetchInfoRequest} from '../../../store/movie-info/actions'
 import {MovieInfoState} from '../../../store/movie-info/types'
-import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {
   MovieDetails,
   MovieDetailsAttrName,

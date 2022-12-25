@@ -1,12 +1,12 @@
 import {Global} from '@emotion/react'
 import {Navigate, Route, Routes} from 'react-router-dom'
-import globals from '../theme/globals'
-import normalize from '../theme/normalize'
 import Header from '../common/components/layout/Header'
 import Root from '../common/components/layout/Root'
+import globals from '../theme/globals'
+import normalize from '../theme/normalize'
+import ErrorPage from './404'
 import About from './about/about'
 import Movies from './movies'
-import ErrorPage from "./404"
 
 export function AppRoutes() {
   return (

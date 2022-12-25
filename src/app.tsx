@@ -2,10 +2,10 @@ import {ThemeProvider} from '@emotion/react'
 import {ReduxRouter, ReduxRouterSelector} from '@lagunovsky/redux-react-router'
 import {createBrowserHistory} from 'history'
 import {Provider} from 'react-redux'
-import lightTheme from './theme/themes/light'
 import {AppRoutes} from './routes'
 import {ApplicationState} from './store'
 import configureStore from './store/configureStore'
+import lightTheme from './theme/themes/light'
 
 const history = createBrowserHistory()
 const store = configureStore(history, window.INITIAL_REDUX_STATE)

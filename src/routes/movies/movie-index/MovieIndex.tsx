@@ -4,9 +4,9 @@ import DataTable from '../../../common/components/controls/DataTable'
 import Container from '../../../common/components/layout/Container'
 import {Loading} from '../../../common/components/layout/Loading'
 import Page from '../../../common/components/layout/Page'
+import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {ApplicationState} from '../../../store'
 import {MovieIndexItem} from '../../../store/movie-index/types'
-import {API_ENDPOINT_IMAGE} from '../../../common/utils/api'
 import {
   MovieIcon,
   MovieIconPh,
