@@ -6,8 +6,9 @@ import Header from '../common/components/layout/Header'
 import Root from '../common/components/layout/Root'
 import About from './about/about'
 import Movies from './movies'
+import ErrorPage from "./404"
 
-export default function AppRoutes() {
+export function AppRoutes() {
   return (
     <Root>
       <Global styles={normalize} />
@@ -17,7 +18,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Navigate to="/movies" replace />} />
         <Route path="/movies/*" element={<Movies />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<div>Not Found</div>} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Root>
   )

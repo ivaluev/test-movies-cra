@@ -3,7 +3,7 @@ import {ReduxRouter, ReduxRouterSelector} from '@lagunovsky/redux-react-router'
 import {createBrowserHistory} from 'history'
 import {Provider} from 'react-redux'
 import lightTheme from './theme/themes/light'
-import AppRoutes from './routes'
+import {AppRoutes} from './routes'
 import {ApplicationState} from './store'
 import configureStore from './store/configureStore'
 
